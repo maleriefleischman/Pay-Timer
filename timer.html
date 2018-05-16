@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PAY TIMER</title>
+      <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+      <script src="jquery.runner.js"></script>
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+      <script src="jquery.validate.min.js"></script>
+    <script src="timer.jsx"></script>
+  </head>
+
+  <body>
+
+    <div class="container-fluid">
+      <h1 class="text-center">PAY TIMER</h1>
+
+    <div>
+    <p class="text-center">We all know time slows down while you're on the clock. It's the little things that help us get by. Like figuring out how much we just got paid to make a cup of coffee, answer natures call, or simply stare into the abyss.  With this handy timer, you can figure out how much you've made with a press of a button so you can spend company time doing 'better' things. </p>
+    </div>
+    
+    <form id="form">
+      <label for="wage">Hourly wage:</label>
+      <input type="number" class="form-control" name="wage" id="wage" required/>
+      <div>
+      <section id="stopWatch">
+          <div>Place Holder</div>
+      </section>
+      <button class="btn btn-primary" type="button" id="start-time">Start!</button>
+      <button class="btn btn-secondary" type="button" id="stop-time">Stop!</button>
+      </div>
+    </form>
+
+    </div>
+  </body>
+
+
+</html>
