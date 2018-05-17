@@ -2,29 +2,31 @@ class Clock extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      wage:0, //default wage $0
-      calcWage:0, //default calcWage $0
+      wage:0, 
+      calcWage:0, 
       start:new Date(), //time when start button is pressed
-      date: new Date() //updated time with each re-run of class
+      date: new Date() //updated time with each run of tick
     };
   }
-
+ 
+  //updates time 
   tick() {
     this.setState({
-      date: new Date() //updated time with each re-run of class (tick of clock)
+      date: new Date()
     });
   }
   
+  //starts clock
   start() {
-    if(this.timerID)
-      clearInterval(this.timerID); //clears previous interval
+    if(this.timerID) //if timer is already running. Clear interval.
+      clearInterval(this.timerID); 
     
     this.setState({
-      start:new Date(), //holds value of start time
+      start:new Date(), //sets start time to now. 
       isRunning: true //identifies timer as running
     })
     
-    //has class re-run every 10 milliseconds
+    //run tick every 10 milliseconds, until stop
     this.timerID = setInterval(
       () => this.tick(),
       10
@@ -32,24 +34,26 @@ class Clock extends React.Component {
   }
   
   stop() {
-    clearInterval(this.timerID); //stops running of class
+    clearInterval(this.timerID); //stops running of tick
     this.setState({
       isRunning: false //identifies timer as stopped
     })
-    this.wage(); //selects value of wage
+    this.wage(); //calculates money
   }
   
+  //update wage on every user input
   handleChange(e){
-    this.setState({wage:parseInt(e.currentTarget.value)}); //update wage to user input
+    this.setState({wage:parseInt(e.currentTarget.value)}); 
   }
   
+  //calculates money earned between start and end of timer
   wage(){
     const {wage,start,date} = this.state
     if(!wage) 
       this.setState({calcWage:0}) //if no user input default wage to $0
     else {
       let wageMil = wage/60/60/1000; //calculates ammount made per millisecond
-      let total = wageMil * Math.abs(start-date); //finds total ammount made while timer was running
+      let total = wageMil * Math.abs(start-date); //calculates total ammount made while timer was running
       this.setState({calcWage:total.toFixed(2)}); //shortens total to 2 decimal points
     }
       
@@ -76,13 +80,15 @@ class Clock extends React.Component {
     );
   }
 }
-//renders timer in selected HTML element
+//initializes clock in application root element. 
 ReactDOM.render(
   <Clock />,
   document.getElementById('root')
 );
 
-// function pulls current UTC time in hours minutes and seconds, then subtracts from initial start time to get a visual representation of a stopwatch starting at 00:00:00
+/* Function formats current UTC time in hours minutes and seconds, given a start and end time. 
+ * Return becomes a visual representation of a stopwatch starting at 00:00:00
+ */
 function UTCTime(start,end) {
   let time = new Date(Math.abs(start-end));
   let hours = time.getUTCHours();
