@@ -68,12 +68,12 @@ class Clock extends React.Component {
             
         <input type="number" className="form-control" name="wage" id="wage" placeholder="Hourly Wage" aria-lable="Hourly Wage" aria-describedby="basic-addon2" onChange={(e)=>{this.handleChange(e)}} required/> 
         <div class="input-group-append"> 
- <!-- Checks to see if timer is running or stopped. If timer is running button will say 'Start!', if not running button says 'Stop! -->'
+ <!-- If timer is running button will say 'Start!', if not running button says 'Stop! -->'
                {!this.state.isRunning ? ( <button className='btn btn-success' onClick={()=>{this.start()}}>Start!</button>)
         : (<button className='btn btn-danger' onClick={()=>{this.stop()}}>Stop!</button>)}
             </div>
           </div>
- <!-- Checks to see if timer is running or stopped. If timer is running show timer, If timer is not running show calculated wage. -->
+ <!-- If timer is running show timer, If timer is not running show calculated wage. -->
         {this.state.isRunning ? (<h1 className="text-center">{UTCTime(this.state.start,this.state.date)}</h1>)
         :(<h1 className="text-center">{'$'+this.state.calcWage}</h1>)}
       </div>
