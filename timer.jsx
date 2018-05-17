@@ -94,6 +94,9 @@ function UTCTime(start,end) {
   let hours = time.getUTCHours();
   let minutes = time.getUTCMinutes();
   let seconds = time.getUTCSeconds();
-  // return checks to see if hr/min/sec are single or double digit. If single digit adds an additional 0 to output for visual consistency
+  
+  /* Return checks to see if hr/min/sec are single or double digit. 
+   * If single digit adds an additional 0 to output for visual consistency
+   */
   return (hours<10 ? '0' : '') + String(hours) + ':' + (minutes<10 ? '0' : '') + String(minutes) + ':' + (seconds<10 ? '0' : '') + String(seconds);
 }
